@@ -1,4 +1,4 @@
-# History Book to Dataset Generator
+# History Book to Dataset Generator ( PDF to dataset )
 
 A Python tool that converts history books (PDF format) into question-answer datasets suitable for training AI models. The tool uses natural language processing and AI to automatically generate high-quality Q&A pairs from historical texts.
 
