@@ -22,21 +22,23 @@ This tool requires Ollama to be installed and running on your system. Ollama pro
 #### Install Ollama:
 
 **macOS/Linux:**
-\`\`\`bash
+
+```bash
 curl -fsSL https://ollama.ai/install.sh | sh
-\`\`\`
+```
 
 **Windows:**
 Download from [https://ollama.ai/download](https://ollama.ai/download)
 
 #### Start Ollama and Download a Model:
-\`\`\`bash
+
+```bash
 # Start Ollama service
 ollama serve
 
 # In another terminal, download a model (e.g., Llama 3.1)
 ollama pull llama3.1
-\`\`\`
+```
 
 Verify Ollama is running by visiting `http://localhost:11434` in your browser.
 
@@ -44,17 +46,17 @@ Verify Ollama is running by visiting `http://localhost:11434` in your browser.
 
 Install the required Python packages:
 
-\`\`\`bash
+```bash
 pip install -r requirements.txt
-\`\`\`
+```
 
 ### 3. spaCy Language Model
 
 Download the English language model for spaCy:
 
-\`\`\`bash
+```bash
 python -m spacy download en_core_web_sm
-\`\`\`
+```
 
 ## Usage
 
@@ -62,44 +64,48 @@ python -m spacy download en_core_web_sm
 
 The script requires two mandatory parameters: the input PDF file path and the output dataset file path.
 
-\`\`\`bash
+```bash
 python history_to_dataset.py <input_pdf_path> <output_jsonl_path>
-\`\`\`
+```
 
 **Examples:**
-\`\`\`bash
+
+```bash
 # Process a history book and save to dataset
 python history_to_dataset.py "my_history_book.pdf" "history_dataset.jsonl"
 
 # Process with specific paths
 python history_to_dataset.py "/path/to/book.pdf" "/path/to/output/dataset.jsonl"
-\`\`\`
+```
 
 ### Advanced Usage
 
-\`\`\`bash
+```bash
 python history_to_dataset.py <input_pdf_path> <output_jsonl_path> \
     --model-name llama3.1 \
     --max-workers 4 \
     --start-chunk 0
-\`\`\`
+```
 
 **Examples:**
-\`\`\`bash
+
+```bash
 # Using different model and more workers
 python history_to_dataset.py "book.pdf" "dataset.jsonl" --model-name mistral --max-workers 8
 
 # Resume processing from chunk 50
 python history_to_dataset.py "book.pdf" "dataset.jsonl" --start-chunk 50
-\`\`\`
+```
 
 ### Command Line Arguments
 
 **Required Arguments:**
+
 - `pdf_path`: Path to the input PDF file
 - `output_path`: Path for the output JSONL dataset file
 
 **Optional Arguments:**
+
 - `--model-name`: Ollama model to use (default: llama3.1)
 - `--max-workers`: Number of parallel processing threads (default: 4)
 - `--start-chunk`: Starting chunk index for resuming processing (default: 0)
@@ -118,7 +124,8 @@ The tool uses historical keywords to identify and filter relevant content. You c
 ### Example Keywords for Different Historical Domains:
 
 **African History:**
-\`\`\`
+
+```
 xhosa
 thembu
 maqoma
@@ -126,27 +133,29 @@ ngqika
 nongqause
 phalo
 cattle-killing
-\`\`\`
+```
 
 **European History:**
-\`\`\`
+
+```
 feudalism
 crusades
 reformation
 enlightenment
 napoleon
 charlemagne
-\`\`\`
+```
 
 **American History:**
-\`\`\`
+
+```
 colonial
 revolutionary
 civil war
 reconstruction
 manifest destiny
 new deal
-\`\`\`
+```
 
 The tool will automatically load your custom keywords when processing documents.
 
@@ -154,13 +163,13 @@ The tool will automatically load your custom keywords when processing documents.
 
 The tool generates a JSONL (JSON Lines) file where each line contains a Q&A pair in the following format:
 
-\`\`\`json
+```json
 {
   "instruction": "What was the significance of the Battle of Hastings?",
   "input": "The Battle of Hastings in 1066 marked the Norman conquest of England.",
   "output": "The Battle of Hastings in 1066 was a pivotal moment that marked the Norman conquest of England, fundamentally changing English society, language, and governance under William the Conqueror's rule."
 }
-\`\`\`
+```
 
 ## Configuration
 
@@ -168,13 +177,13 @@ The tool generates a JSONL (JSON Lines) file where each line contains a Q&A pair
 
 You can use different Ollama models by specifying the `--model-name` parameter:
 
-\`\`\`bash
+```bash
 # Using Mistral
 python history_to_dataset.py book.pdf dataset.jsonl --model-name mistral
 
 # Using Llama 3.1 (default)
 python history_to_dataset.py book.pdf dataset.jsonl --model-name llama3.1
-\`\`\`
+```
 
 ### Performance Tuning
 
@@ -189,6 +198,7 @@ If processing is interrupted, the tool automatically creates checkpoints. Simply
 ## Logging
 
 The tool creates detailed logs in:
+
 - `dataset_generation.log`: Main processing log
 - `raw_responses.log`: Raw AI model responses for debugging
 
@@ -197,14 +207,17 @@ The tool creates detailed logs in:
 ### Common Issues:
 
 1. **"Ollama server not reachable"**
+
    - Ensure Ollama is installed and running (`ollama serve`)
    - Check that port 11434 is not blocked
 
 2. **"No historical keywords found"**
+
    - Review and update your `keywords.txt` file
    - Ensure your PDF contains historical content
 
 3. **Low Q&A pair generation**
+
    - Check if your PDF text extraction is working properly
    - Verify that historical keywords match your content
    - Consider using a different AI model
