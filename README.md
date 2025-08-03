@@ -44,17 +44,20 @@ Verify Ollama is running by visiting `http://localhost:11434` in your browser.
 
 ### 2. Python Dependencies
 
+Activate a python virtual env
+
+```
+python3 -m venv venv
+source venv/bin/activate
+```
+
 Install the required Python packages:
 
 ```bash
-pip install -r requirements.txt
+pip install spacy download jsonlines requests tqdm PyPDF2 psutil textacy scikit-learn spacy pynvml
 ```
 
-### 3. spaCy Language Model
-
-Download the English language model for spaCy:
-
-```bash
+```
 python -m spacy download en_core_web_sm
 ```
 
