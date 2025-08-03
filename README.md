@@ -34,10 +34,13 @@ Download from [https://ollama.ai/download](https://ollama.ai/download)
 
 ```bash
 # Start Ollama service
-ollama serve
+ollama start
 
 # In another terminal, download a model (e.g., Llama 3.1)
 ollama pull llama3.1
+
+# Run
+ollama run llama3.1
 ```
 
 Verify Ollama is running by visiting `http://localhost:11434` in your browser.
