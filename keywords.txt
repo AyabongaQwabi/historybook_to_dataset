@@ -1,0 +1,76 @@
+# Historical Keywords Configuration File
+# Add one keyword per line (case-insensitive)
+# Lines starting with # are comments and will be ignored
+
+# General Historical Terms
+war
+battle
+conflict
+treaty
+empire
+kingdom
+dynasty
+ruler
+king
+queen
+emperor
+chief
+leader
+revolution
+independence
+colonial
+colony
+settlement
+migration
+civilization
+culture
+tradition
+ritual
+ceremony
+religion
+missionary
+trade
+conquest
+invasion
+rebellion
+uprising
+movement
+reform
+ancient
+medieval
+renaissance
+industrial
+modern
+contemporary
+century
+decade
+era
+period
+age
+epoch
+
+# Add your specific historical keywords below:
+# Example for African History:
+# xhosa
+# thembu
+# maqoma
+# ngqika
+# nongqause
+# phalo
+# cattle-killing
+
+# Example for European History:
+# feudalism
+# crusades
+# reformation
+# enlightenment
+# napoleon
+# charlemagne
+
+# Example for American History:
+# colonial
+# revolutionary
+# civil war
+# reconstruction
+# manifest destiny
+# new deal
